@@ -78,20 +78,20 @@ This guide uses the lastest version of Opencore. You are encouraged to build you
 3. When the Big Sur install media is ready, mount the EFI partition with the [MountEFI](https://github.com/corpnewt/MountEFI) utility and copy the contents of the latest EFI linked above into this partition.
     - Make sure to copy the entire contents of the EFI above, starting from the EFI folder itself. So inside the EFI partition it should start with EFI, followed by BOOT and OC folders, etc. For more information visit the OpenCore [guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html)
 
-4. Now, boot from the Mojave installer. In Disk Utility, go to Show All Devices in the top left, and then select the entire drive to format it as APFS.
-    - After about 10 minutes or so, it will reboot. Go back into the boot menu and select your Mojave install media. In the opencore boot menu you should now see "Mac OS Install" as a menu item. Select that to continue the installation. 
+4. Now, boot from the Big Sur installer. In Disk Utility, go to Show All Devices in the top left, and then select the entire drive to format it as APFS.
+    - After about 10 minutes or so, it will reboot. Go back into the boot menu and select your Big Sur install media. In the opencore boot menu you should now see "Mac OS Install" as a menu item. Select that to continue the installation. 
     - The second phase of the installation will continue for about 15-20 minutes. 
   
 5. Before you can boot from the new Big Sur installation, you will need to copy the EFI to your insternal SSD drive using the same procedure from step 3.  
 
-6. On first boot, you will need to fix...
+6. On first boot, if you have some hardware issues, read the Opencore guide for [Cometlake devices.](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#starting-point). You may need to make adjustments to your config.plist file. Instructions on how to edit this file are below.
 
 7. **Required final step 1**: This is important, as the EFI you downloaded does not include a serial number, which will prevent iMessage, Facetime and other Mac services from working.
     - Download [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 
-    - Mount your EFI on the Mojave build you have installed. 
+    - Mount your EFI on the Mac OS build you have installed. 
     - Run GenSMBIOS, follow the prompts in order. 
     - Step 2 - The config.plist is located in EFI / OC / drag and drop the config.plist file into Terminal.
-    - Step 3 - build type, ours is **MacBook10,1** 
+    - Step 3 - build type, ours is **MacBookPro16,1** 
     - It will generate a serial number to be used on your machine. Yours must be different than the one used in the included EFI in order to set up iCloud / iMessage / Facetime / etc. 
     - Final tip: our serial numbers on hackintosh builds should **not** pass validation on [Apple's Check Coverage site](https://checkcoverage.apple.com/). You will want to verify that before using your serial number.
 
