@@ -1,5 +1,5 @@
-# Galaxy-Chromebook
-Mac OS, Linux and other systems on the Samsung Galaxy Chromebook.
+# Samsung Galaxy Chromebook: PRODUCT(RED) Hackbook
+All the red without the product! Install guide for multibooting Mac OS, Linux, ChromeOS and more.
 
 |      |       |
 |------------|-------------|
@@ -110,6 +110,16 @@ This guide uses the lastest version of Opencore. You are encouraged to build you
 ## Step 4: Multiboot on the Internal SSD.
 Once Mac OS and Opencore are working, you can install other Operating Systems to the internal SSD. 
 
- - For Linux, install the distro of your choice to a partition at the end of the SSD and configure Grub to boot with an option to load Linux and Opencore at boot.
+ - For Linux, install the distro of your choice to a partition at the end of the SSD and configure Grub to boot with an option to load Linux and Opencore.
  - For Brunch, this guide will have additional steps for following the [GetDroidTips tutorial](https://www.getdroidtips.com/install-chrome-os/) on booting Chrome OS from an image on a partition. Check back soon for more details. 
+ - An example grub config file may look like this to include Opencore as a boot option:
 
+```
+menuentry "OSX" --class osx --class os {
+savedefault
+insmod fat
+insmod chain
+search --no-floppy --set=root --label SYSTEM
+chainloader /EFI/BOOT/BOOTx64.efi
+}
+```
