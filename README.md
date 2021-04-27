@@ -110,16 +110,24 @@ This guide uses the lastest version of Opencore. You are encouraged to build you
 ## Step 4: Multiboot on the Internal SSD.
 Once Mac OS and Opencore are working, you can install other Operating Systems to the internal SSD. 
 
- - For Linux, install the distro of your choice to a partition at the end of the SSD and configure Grub to boot with an option to load Linux and Opencore.
- - For Brunch, this guide will have additional steps for following the [GetDroidTips tutorial](https://www.getdroidtips.com/install-chrome-os/) on booting Chrome OS from an image on a partition. Check back soon for more details. 
- - An example grub config file may look like this to include Opencore as a boot option:
+ - For Linux, install the distro of your choice to a partition at the end of the SSD. Currently, Manjaro Linux works best as it already incorporates Sound Open Firmware natively, which enables sound on this device. Other distros will work, but you will need to configure sound on your own.
+ - For Brunch, this guide will have additional steps for following the [GetDroidTips tutorial](https://www.getdroidtips.com/install-chrome-os/) on booting Chrome OS from an image on a partition. You will want to start with Recovery v88 on this device, as wifi works. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download v88. To upgrade to v89 and above, you will need to replace the wifi driver in /lib/firmware with the file in this repo (iwlwifi-QuZ...) 
+ - An example grub config file may look like this, if you have EFI on partition 1, Mac OS on partition 2, Chrome OS on partition 3 and Linux on partition 4. This assumes you installed grub and refind. Currently, using grup to chainload opencore is problematic (thus why refind is used). 
 
 ```
-menuentry "OSX" --class osx --class os {
-savedefault
-insmod fat
-insmod chain
-search --no-floppy --set=root --label SYSTEM
-chainloader /EFI/BOOT/BOOTx64.efi
+menuentry "ChromeOS" {
+	img_part=/dev/nvme0n1p3
+	img_path=/chromos.img
+	search --no-floppy --set=root --file $img_path
+	loopback loop $img_path
+	linux (loop,7)/kernel-4.19 boot=local noresume noswap loglevel=7 disablevmx=off \
+		cros_secure cros_debug options=native_chromebook_image,iwlwifi_backport,enable_updates loop.max_part=16 img_part=$img_part img_path=$img_path \
+		console= vt.global_cursor_default=0 brunch_bootsplash=default
+	initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
+}
+menuentry "Mac OS"{
+   insmod part_gpt
+   search --no-floppy --set=root --fs-uuid 67E3-17ED
+   chainloader /EFI/refind/refind_x64.efi
 }
 ```
