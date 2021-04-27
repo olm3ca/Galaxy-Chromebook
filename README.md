@@ -3,7 +3,7 @@ All the red without the product! Install guide for multibooting Mac OS, Linux, C
 
 |      |       |
 |------------|-------------|
-|<img src="replaceme.jpg" width="300">|<img src="replaceme.png" width="600">|
+|<img src="UEFI.jpeg" width="300">|<img src="replaceme.png" width="600">|
 
 ### Follow For Updates
 The goal of this repo will be to detail all steps necessary for multi-boot of various operating systems including Mac OS, Linux and Brunch. Not all of the functionality is working. This will be updated frequently as fixes are identified. 
