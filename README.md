@@ -24,8 +24,8 @@ Our specs include:
 -  Touchpad: ELAN
 -  SSD: 256GB NVME M.2 - Easily upgradable following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
-### Linux and Windows 10 Current Status
-In booting Linux Mint 20.1, all hardware worked out of the box. Other distros may have different results, YMMV. It is expected that Windows 10 would also fully support this hardware, since it is quite similar to the Galaxy Book Flex.
+### Manjaro Linux and Windows 10 Current Status
+In booting Manjaro Linux, all hardware worked out of the box. Other distros may have different results, YMMV. It is expected that Windows 10 would also fully support this hardware, since it is quite similar to the Galaxy Book Flex.
 
 ### MacOS Big Sur Current Status
 In configuring MacOS Big Sur with Opencore, the following is the latest hardware status: 
@@ -39,7 +39,7 @@ In configuring MacOS Big Sur with Opencore, the following is the latest hardware
 | Graphics Accel.    | Working              | Platform ID 00009B3E / Device ID 9B3E0000)                        |
 | Sound              | Working              | ALC256                                                            |
 | Keyboard backlight | Working              |                                                                   |
-| Touchscreen        | Working              | With VoodooI2C.kext and VoodooI2CHID.kext                         |
+| Touchscreen        |               |                          |
 
 
 ## Step 1: Firmware Write Protect
