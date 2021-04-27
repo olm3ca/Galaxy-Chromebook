@@ -1,4 +1,4 @@
-# Samsung Galaxy Chromebook: PRODUCT(RED) Hackbook
+# Samsung Galaxy Chromebook: PRODUCT(RED) Multiboot Hackbook
 All the red without the product! Install guide for multibooting Mac OS, Linux, ChromeOS and more.
 
 |      |       |
