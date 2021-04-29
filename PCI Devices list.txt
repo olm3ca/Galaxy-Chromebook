@@ -1,0 +1,25 @@
+Name                                                                       LocationInfo                      UINumber
+----                                                                       ------------                      --------
+Intel(R) PCI Express Root Port #9 - 02B0                                  PCI bus 0, device 29, function 0        0
+PCI standard host CPU bridge                                              PCI bus 0, device 0, function 0         0
+Intel(R) Serial IO I2C Host Controller - 02E9                             PCI bus 0, device 21, function 1        0
+Intel(R) Serial IO I2C Host Controller - 02EA                             PCI bus 0, device 21, function 2        0
+Intel(R) Dynamic Tuning Processor Participant                             PCI bus 0, device 4, function 0         0
+Intel(R) Shared SRAM - 02EF                                               PCI bus 0, device 20, function 2        0
+Intel(R) Smart Sound Technology (Intel(R) SST) Audio Controller           PCI bus 0, device 31, function 3        0
+Intel(R) SMBus - 02A3                                                     PCI bus 0, device 31, function 4        0
+Intel(R) 400 Series Chipset Family SATA AHCI Controller                   PCI bus 0, device 23, function 0        0
+Intel(R) Serial IO SPI Host Controller - 02AA                             PCI bus 0, device 30, function 2        0
+Intel(R) UHD Graphics                                                     PCI bus 0, device 2, function 0         0
+Intel(R) Gaussian Mixture Model - 1911                                    PCI bus 0, device 8, function 0         0
+Intel(R) Serial IO I2C Host Controller - 02E8                             PCI bus 0, device 21, function 0        0
+Intel(R) Wi-Fi 6 AX201 160MHz                                             PCI bus 0, device 20, function 3        0
+Intel(R) Serial IO I2C Host Controller - 02EB                             PCI bus 0, device 21, function 3        0
+Intel(R) USB 3.1 eXtensible Host Controller - 1.10 (Microsoft)            PCI bus 0, device 20, function 0        0
+I/O LPC Controller - 0284 for Intel(R) On-Package Platform Controller Hub PCI bus 0, device 31, function 0        0
+Intel(R) Serial IO I2C Host Controller - 02C5                             PCI bus 0, device 25, function 0        0
+Intel(R) Thermal Subsytem - 02F9                                          PCI bus 0, device 18, function 0        0
+Standard NVM Express Controller                                           PCI bus 1, device 0, function 0         8
+Intel(R) SPI (flash) Controller - 02A4                                    PCI bus 0, device 31, function 5        0
+Intel(R) Serial IO UART Host Controller - 02A8                            PCI bus 0, device 30, function 0        0
+Intel(R) Serial IO SPI Host Controller - 02AB                             PCI bus 0, device 30, function 3        0
