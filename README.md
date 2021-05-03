@@ -21,7 +21,7 @@ Our specs include:
 -  RAM: 8GB Soldered to motherboard
 -  Audio Codec: ALC256
 -  Wifi/BT Card: Intel AX201
--  Touchpad: ELAN
+-  Touchpad: Synaptics TM3579-001
 -  SSD: 256GB NVME M.2 - Easily upgradable following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
 ### Manjaro Linux and Windows 10 Current Status
@@ -35,11 +35,11 @@ In configuring MacOS Big Sur with Opencore, the following is the latest hardware
 | WiFi               | Working              | Working                                                           |
 | Bluetooth          | Working              | Working                                                           |
 | Suspend / Sleep    | Working              | Working                                                           |
-| Touchpad           | Working              | Voodoo ELAN                                                       |
-| Graphics Accel.    | Working              | Platform ID 00009B3E / Device ID 9B3E0000)                        |
-| Sound              | Working              | ALC256                                                            |
-| Keyboard backlight | Working              |                                                                   |
-| Touchscreen        |               |                          |
+| Touchpad           | Not Working          | Synaptics TM3579-001                                              |
+| Graphics Accel.    | Not Working          | Platform ID 0900A53E / Device ID 9B3E0000)                        |
+| Sound              | Not Working          | ALC256? Works in Manjaro with SOF (sof-cmlda7219max               |
+| Keyboard backlight | Not Working          |                                                                   |
+| Touchscreen        | Not Working          | ELAN Touchscreen                         |
 
 
 ## Step 1: Firmware Write Protect
