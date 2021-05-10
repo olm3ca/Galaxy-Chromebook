@@ -1,43 +1,43 @@
 # Samsung Galaxy Chromebook: PRODUCT(RED) Multiboot Hackbook
-All the red without the product! Install guide for multibooting Mac OS, Linux, ChromeOS and more.
+All the red without the product! Install guide for multibooting Mac OS, Linux, ChromeOS, & Windows 10.
 
 |      |       |
 |------------|-------------|
 |<img src="UEFI.jpeg" width="300">|<img src="replaceme.png" width="600">|
 
 ### Follow For Updates
-The goal of this repo will be to detail all steps necessary for multi-boot of various operating systems including Mac OS, Linux and Brunch. Not all of the functionality is working. This will be updated frequently as fixes are identified. 
+The goal of this repo will be to detail all steps necessary for multi-boot of various operating systems. Not all of the functionality is working. This will be updated frequently as fixes are identified. 
 
 ### Mandatory Disclaimer
 
-The process described in this document could cause irreversible damage to your expensive laptop, and
+You know this already: The process described in this document could cause irreversible damage to your expensive laptop, and
 you should prepare yourself mentally and emotionally for that outcome before you begin. I accept absolutely no responsibility for the consequences of anyone choosing to follow or ignore any of the instructions in this document, and make no guarantees about the quality or effectiveness of the
 software in this repo.
 
 ### Galaxy Chromebook Hardware
-Our specs include:
+Specs:
 -  CPU: Intel i5-10210U (Cometlake)
 -  GPU: Intel UHD 620
 -  RAM: 8GB Soldered to motherboard
--  Audio Codec: ALC256
+-  Audio: Intel Multimedia Controller (only works with Sound Open Firmware on Linux & Chrome OS). On CrOS, uses driver sof-cmlda7219max 
 -  Wifi/BT Card: Intel AX201
--  Touchpad: Synaptics TM3579-001
+-  Touchpad: Synaptics TM3579-001 (only works on Linux and Chrome OS). 
 -  SSD: 256GB NVME M.2 - Easily upgradable following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
-### Manjaro Linux and Windows 10 Current Status
-In booting Manjaro Linux, all hardware worked out of the box. Other distros may have different results, YMMV. It is expected that Windows 10 would also fully support this hardware, since it is quite similar to the Galaxy Book Flex.
+### OS Compatibility Current Status
+In booting Manjaro Linux with kernel 5.10 and Sound Open Firmware baked in, all hardware worked out of the box. This distro is the easiest to install, whereas others such as Ubuntu will need to be upgraded to a newer kernel and SOF will need to be configured.
 
-### MacOS Big Sur Current Status
-In configuring MacOS Big Sur with Opencore, the following is the latest hardware status: 
+### OS Current Status
+The following table shows hardware working based on the OS installed: 
 
-| Feature            | Status               | Notes                                                             |
-|--------------------|----------------------|-------------------------------------------------------------------|
-| WiFi               | Working              | Working                                                           |
-| Bluetooth          | Working              | Working                                                           |
-| Suspend / Sleep    | Working              | Working                                                           |
-| Touchpad           | Not Working          | Synaptics TM3579-001                                              |
-| Graphics Accel.    | Not Working          | Platform ID 0900A53E / Device ID 9B3E0000)                        |
-| Sound              | Not Working          | ALC256? Works in Manjaro with SOF (sof-cmlda7219max               |
+| Hardware           | Manjaro Linux        | Mac OS Catalina     | Windows 10      | Brunch		|
+|--------------------|----------------------|---------------------|-----------------|-------------------|
+| WiFi               | Working              | Working             | Working         | Working		|
+| Bluetooth          | Working              | Working             | Working	    | Working		|
+| Suspend / Sleep    | Not Working (fixable)| Not Working         | Not Working.    | Not Working	|
+| Touchpad           | Working	            | Not Working         | Not Working     | Working           |
+| Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
+| Sound              | Working (SOF, 5.10)  | Not Working         | Not Working	    | Working (headphones problem noted below)
 | Keyboard backlight | Not Working          |                                                                   |
 | Touchscreen        | Not Working          | ELAN Touchscreen                         |
 
