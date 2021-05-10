@@ -1,5 +1,5 @@
-# Samsung Galaxy Chromebook: PRODUCT(RED) Multiboot
-All the red without the product! Install guide for multibooting Linux, ChromeOS, Windows 10 and Mac OS Catalina.
+# Samsung Galaxy Chromebook Multiboot
+Install guide for multibooting ChromeOS, Linux, Windows 10 and Mac OS Catalina.
 
 |      |       |
 |------------|-------------|
