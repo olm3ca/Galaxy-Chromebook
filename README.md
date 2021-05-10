@@ -5,27 +5,27 @@ Install guide for multibooting ChromeOS, Linux, Windows 10 and Mac OS Catalina.
 |------------|-------------|
 |<img src="UEFI.jpeg" width="400">|<img src="SGC.jpeg" width="400">|
 
-### Follow For Updates
-The goal of this repo will be to detail all steps necessary for multi-boot of various operating systems. Not all of the functionality is working. This will be updated frequently as fixes are identified. 
+### Why?
+A recent UEFI firmware lets us boot what we want. This laptop has a beautiful design and is available now for half the original price. The goal of this repo will be to detail the process for multi-boot of various operating systems. Not all of the functionality is working but this will be updated as fixes are identified. 
 
-### Mandatory Disclaimer
+### Disclaimer
 
 You know this already: The process described in this document could cause irreversible damage to your expensive laptop, and
 you should prepare yourself mentally and emotionally for that outcome before you begin. I accept absolutely no responsibility for the consequences of anyone choosing to follow or ignore any of the instructions in this document, and make no guarantees about the quality or effectiveness of the
 software in this repo.
 
-### Galaxy Chromebook Hardware
+### Samsung Galaxy Chromebook (Gen 1) Hardware
 Specs:
 -  CPU: Intel i5-10210U (Cometlake)
 -  GPU: Intel UHD 620
 -  RAM: 8GB Soldered to motherboard
--  Audio: Intel Multimedia Controller (only works with Sound Open Firmware on Linux & Chrome OS). On CrOS, uses driver sof-cmlda7219max 
--  Wifi/BT Card: Intel AX201
+-  Audio: Intel Smart Sound Technology (only works with Sound Open Firmware on Linux & Chrome OS). On CrOS, uses driver sof-cmlda7219max 
+-  Wifi/BT Card: Intel AX201 
 -  Touchpad: Synaptics TM3579-001 (only works on Linux and Chrome OS). 
--  SSD: 256GB NVME M.2 - Easily upgradable following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
+-  SSD: 256GB NVME M.2 - Easily upgradable to 1TB for $200 following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
 ### OS Compatibility Current Status
-In booting Manjaro Linux with kernel 5.10 and Sound Open Firmware baked in, all hardware worked out of the box. This distro is the easiest and best to install for this hardware, whereas others such as Ubuntu / Mint will need to be upgraded to a newer kernel and SOF will need to be configured. Windows is easy to install but currently has missing functionality. Mac OS is sluggish without accelerated graphics. 
+In booting Manjaro Linux 21 with kernel 5.10 and Sound Open Firmware baked in, all hardware worked out of the box. This distro is the easiest and best to install for this hardware, whereas others such as Ubuntu / Mint will need to be upgraded to a newer kernel and SOF will need to be configured. Windows is easy to install but currently has missing functionality. Mac OS is sluggish without accelerated graphics. 
 
 On all installations below, bluetooth works out of the box and therefore audio / external mouse is a solution to the internal audio & touchpad problems noted. Also, battery and power management work for all (even MacOS has working battery percentage).  
 
@@ -94,7 +94,10 @@ Download the lastest version of Opencore. Catalina is recommended for this hardw
 
 
 ## Step 5: Install Brunch.
-Once Mac OS and Opencore are working, you can install other Operating Systems to the internal SSD. 
+Brunch installs the native recovery image for our device into an image and allows full access to the hardware with two exceptions:
+ - Fingerprint reader does not work (expected behavior) 
+ - Sound is currently not working as it should. Internal speakers work, however plugging in headphones causes speakers to play instead of headphones. This is being looked into.
+ - Google Play is a work in progress. According to some users, it works on beta channel. For me it has not worked yet but I mostly use Linux anyway. 
 
  - Follow this [GetDroidTips tutorial](https://www.getdroidtips.com/install-chrome-os/) on booting Chrome OS from an image on a partition. You will want to start with Recovery v88 on this device, as wifi works. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download v88. To upgrade to v89 and above, you will need to replace the wifi driver in /lib/firmware with the file in this repo (`iwlwifi-QuZ-a0-hr-b0-57.ucode`) 
  - An example grub config file may look like this for booting to Brunch on this machine (with a few necessary customizations based on our hardware, if you have  Chrome OS on partition 3 (change nvme0n1p3 to the partition # you are using). 
