@@ -1,9 +1,9 @@
-# Samsung Galaxy Chromebook: PRODUCT(RED) Multiboot Hackbook
-All the red without the product! Install guide for multibooting Mac OS, Linux, ChromeOS, & Windows 10.
+# Samsung Galaxy Chromebook: PRODUCT(RED) Multiboot
+All the red without the product! Install guide for multibooting Linux, ChromeOS, Windows 10 and Mac OS Catalina.
 
 |      |       |
 |------------|-------------|
-|<img src="UEFI.jpeg" width="300">|<img src="SGC.jpeg" width="300">|
+|<img src="UEFI.jpeg" width="400">|<img src="SGC.jpeg" width="400">|
 
 ### Follow For Updates
 The goal of this repo will be to detail all steps necessary for multi-boot of various operating systems. Not all of the functionality is working. This will be updated frequently as fixes are identified. 
