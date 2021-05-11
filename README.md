@@ -71,7 +71,7 @@ The next step is to get Coreboot installed so we can install other operating sys
 Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
 
 ## Step 4: Install MacOS Catalina
-Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future corebook / MrChromebox firmware update. 
+Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future firmware update from MrChromebox. Emulated nvram does seem to work. 
  
 1. Download and set up your Mac OS X Catalina USB install media. [gibMacOS](https://github.com/corpnewt/gibMacOS) 
     - Before you make the install USB, make sure it is formatted as Mac OS Extended (Journaled) with GUID Partition Map.
