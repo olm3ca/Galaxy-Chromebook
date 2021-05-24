@@ -34,7 +34,7 @@ On all installations below, bluetooth works out of the box and therefore audio /
 |--------------------|----------------------|---------------------|-----------------|-------------------|
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
-| Suspend / Sleep    | Not Working (fixable)| Not Working         | Not Working     | Working 		|
+| Suspend / Sleep    | Not Working (see note)| Not Working         | Not Working     | Working 		|
 | Touchpad           | Working	            | Not Working         | Not Working     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
 | Sound              | Working (SOF, 5.10)  | Not Working         | Not Working	    | Working (see below)|
@@ -67,8 +67,11 @@ The next step is to get Coreboot installed so we can install other operating sys
 - `sudo firmware-util.sh`
 - Follow the on-screen prompts and make sure you save a backup of the stock firmware!
 
-## Step 3: Install Manjaro or Windows
+## Step 3: Install Manjaro, Fedora 34 or Windows
 Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
+ - A note for Manjaro / Fedora 34 Linux users (thanks @sos-michael for the tips!): 
+ - MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.
+ - In Fedora 34, you may need to blacklist `elants_i2c`. It was hanging sleep for some users.
 
 ## Step 4: Install MacOS Catalina
 Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future firmware update from MrChromebox. Emulated nvram does seem to work. 
