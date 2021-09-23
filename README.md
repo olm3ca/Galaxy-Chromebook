@@ -99,18 +99,18 @@ Download the lastest version of Opencore. Catalina is recommended for this hardw
 ## Step 5: Install Brunch.
 Brunch installs the native recovery image for our device into an image and allows full access to the hardware with a few exceptions:
  - Fingerprint reader does not work (expected behavior) 
- - Sound is currently not working as it should. Internal speakers work, however plugging in headphones causes speakers to play instead of headphones. This is being looked into.
+ - Sound may not work as it should. 
  - Google Play is a work in progress. According to some users, it works on beta channel. For me it has not worked yet but I mostly use Linux anyway. 
 
- 1. Follow this [GetDroidTips tutorial](https://www.getdroidtips.com/install-chrome-os/) on booting Chrome OS from an image on a partition. You will want to start with Recovery v88 on this device, as wifi works. 
- 2. Make sure to use Linux Mint as the live USB for this (and not Manjaro). The script referenced in the tutorial only works with Mint (or Ubuntu). The script also requires that you use NTFS for the ChromeOS partition.
- 3. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download recvovery v88. To upgrade to v89 and above, you will need to copy the wifi driver to /lib/firmware with the file in this repo (`iwlwifi-QuZ-a0-hr-b0-57.ucode`) Don't remove the newer version, just copy this one into the same location.
+ 1. Read the instructions on the official Brunch repo: [https://github.com/sebanc/brunch](https://github.com/sebanc/brunch)
+ 2. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download the latest recvovery. 
+ 3. The wifi driver from v88 was working, YMMV with newer releases. The version of this driver is saved to this repo, simply copy it to /lib/firmware - look for the file in this repo (`iwlwifi-QuZ-a0-hr-b0-57.ucode`) Don't remove the newer version, just copy this one into the same location.
  4. An example grub config file may look like this for booting to Brunch on this machine (with a few necessary customizations based on our hardware. 
  - Change `/dev/nvme0n1p3` to the partition number where your Chrome OS is.
- - `kernel-4.19` is required for our hardware to work
+ - `kernel-4.19` may or may not be required for our hardware to work
  - `options=native_chromebook_image` tells Brunch to use the native drivers for our machine within the hatch image.
- - `iwlwifi_backport` is for the wifi to work as noted above, only with v57 of the driver, not sure why
- - `enable_updates` will allow you to update to new CrOS releases, but always remember to copy v57 of the wifi driver to keep it working.
+ - `iwlwifi_backport` is for the wifi to work as noted above (if you decide to use it) 
+ - `enable_updates` will allow you to update to new CrOS releases
 
 ```
 menuentry "ChromeOS" {
