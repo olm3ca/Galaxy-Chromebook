@@ -1,5 +1,5 @@
 # Samsung Galaxy Chromebook Multiboot
-Install guide for multibooting ChromeOS, Linux, Windows 10 and Mac OS Catalina.
+Install guide for multibooting ChromeOS, Linux, Windows 10/11 and Mac OS.
 
 |      |       |
 |------------|-------------|
@@ -30,17 +30,17 @@ In booting Manjaro Linux 21 with kernel 5.10 and Sound Open Firmware baked in, a
 On all installations below, bluetooth works out of the box and therefore audio / external mouse is a solution to the internal audio & touchpad problems noted. Also, battery and power management work for all (even MacOS has working battery percentage).  
 
 
-| Hardware           | Manjaro Linux        | Mac OS Catalina     | Windows 10      | Brunch		|
+| Hardware           | Manjaro Linux        | Mac OS Catalina     | Windows 10/11   | Brunch		|
 |--------------------|----------------------|---------------------|-----------------|-------------------|
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
-| Suspend / Sleep    | Not Working (see note)| Not Working         | Not Working     | Working 		|
+| Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
 | Touchpad           | Working	            | Not Working         | Not Working     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
 | Sound              | Working (SOF, 5.10)  | Not Working         | Not Working	    | Working (see below)|
-| Keyboard backlight | Working              | Not Working         | Working 	    | Working		|
+| Keyboard backlight | Working              | Not Working         | Not Working     | Working		|
 | Touchscreen        | Works with pen       | Not Working         | Works with pen  | Working 		|
-| Screen brightness  | Working		    | Not Working	  | Not Working, 50%| Working		|
+| Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
 ## Step 1: Firmware Write Protect
@@ -67,7 +67,7 @@ The next step is to get Coreboot installed so we can install other operating sys
 - `sudo firmware-util.sh`
 - Follow the on-screen prompts and make sure you save a backup of the stock firmware!
 
-## Step 3: Install Manjaro, Fedora 34 or Windows
+## Step 3: Install Manjaro, Fedora 34 or Windows 10/11
 Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
  - A note for Manjaro / Fedora 34 Linux users (thanks @sos-michael for the tips!): 
  - MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.
