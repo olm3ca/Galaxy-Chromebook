@@ -30,16 +30,16 @@ In booting Manjaro Linux 21 with kernel 5.10 and Sound Open Firmware baked in, a
 On all installations below, bluetooth works out of the box and therefore audio / external mouse is a solution to the internal audio & touchpad problems noted. Also, battery and power management work for all (even MacOS has working battery percentage).  
 
 
-| Hardware           | Manjaro Linux        | Mac OS Catalina     | Windows 10/11   | Brunch		|
+| Hardware           | Linux (Manjaro, Fedora)| Mac OS Catalina     | Windows 10/11   | Brunch		|
 |--------------------|----------------------|---------------------|-----------------|-------------------|
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
 | Touchpad           | Working	            | Not Working         | Not Working     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
-| Sound              | Working (SOF, 5.10)  | Not Working         | Not Working	    | Working (see below)|
+| Sound              | Working (SOF)        | Not Working         | Not Working	    | Working (see below)|
 | Keyboard backlight | Working              | Not Working         | Not Working     | Working		|
-| Touchscreen        | Works with pen       | Not Working         | Works with pen  | Working 		|
+| Touchscreen        | Working              | Not Working         | Works with pen  | Working 		|
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
