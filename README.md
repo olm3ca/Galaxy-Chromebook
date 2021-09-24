@@ -67,11 +67,11 @@ The next step is to get Coreboot installed so we can install other operating sys
 - `sudo firmware-util.sh`
 - Follow the on-screen prompts and make sure you save a backup of the stock firmware!
 
-## Step 3: Install Manjaro, Fedora 34 or Windows 10/11
+## Step 3: Install Manjaro, Fedora or Windows 10/11
 Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
- - A note for Manjaro / Fedora 34 Linux users (thanks @sos-michael for the tips!): 
+ - A note for Manjaro / Fedora Linux users (thanks @sos-michael for the tips!): 
  - MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.
- - In Fedora 34, you may need to blacklist `elants_i2c`. It was hanging sleep for some users.
+ - In Fedora, you may need to blacklist `elants_i2c`. It was hanging sleep for some users. Do this in terminal: `echo "blacklist elants_i2c" | sudo tee /etc/modprobe.d/unneeded-modules.conf`
 
 ## Step 4: Install MacOS Catalina
 Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future firmware update from MrChromebox. Emulated nvram does seem to work. 
