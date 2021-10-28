@@ -99,18 +99,19 @@ Download the lastest version of Opencore. Catalina is recommended for this hardw
 ## Step 5: Install Brunch.
 Brunch installs the native recovery image for our device into an image and allows full access to the hardware with a few exceptions:
  - Fingerprint reader does not work (expected behavior) 
- - Sound may not work as it should. 
- - Google Play is a work in progress. According to some users, it works on beta channel. For me it has not worked yet but I mostly use Linux anyway. 
+ - Google Play is a work in progress. According to some users, it works on beta channel. I mostly use Linux apps. 
 
  1. Read the instructions on the official Brunch repo: [https://github.com/sebanc/brunch](https://github.com/sebanc/brunch)
  2. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download the latest recvovery. 
- 3. The wifi driver from v88 was working, YMMV with newer releases. The version of this driver is saved to this repo, simply copy it to /lib/firmware - look for the file in this repo (`iwlwifi-QuZ-a0-hr-b0-57.ucode`) Don't remove the newer version, just copy this one into the same location.
- 4. An example grub config file may look like this for booting to Brunch on this machine (with a few necessary customizations based on our hardware. 
- - Change `/dev/nvme0n1p3` to the partition number where your Chrome OS is.
- - `kernel-4.19` may or may not be required for our hardware to work
+ 3. You will need either an external mini SD card / USD to run Brunch off of, or you can create an EXT4 partition on the internal drive. Make sure it is at least 14GB in size - probably bigger than that if you plan to install any apps.
+ 4. After installing using the steps in the Brunch guide, you will be provided with a Grub menu to copy into your bootloader. What needs to be changed for our machine to run properly are the following four options: 
+ 
+ - `kernel-4.19` needed for our hardware to work properly
  - `options=native_chromebook_image` tells Brunch to use the native drivers for our machine within the hatch image.
- - `iwlwifi_backport` is for the wifi to work as noted above (if you decide to use it) 
+ - `iwlwifi_backport` is for the wifi to work 
  - `enable_updates` will allow you to update to new CrOS releases
+
+This is an older Grub entry with those options added. Do not use this as it won't work anymore - use your own that is generated from the brunch install script.
 
 ```
 menuentry "ChromeOS" {
