@@ -69,8 +69,8 @@ The next step is to get Coreboot installed so we can install other operating sys
 
 ## Step 3: Install Manjaro, Fedora or Windows 10/11
 Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
- - A note for Manjaro / Fedora Linux users (thanks @sos-michael for the tips!): 
- - MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.
+ - A few notes for Linux users. In order for sound to work, we need `sof-firmware`. You must be on a distro with a kernel 5.10 and up. Fedora works out of the box, Manjaro does as well (as long as you install sof-firmware).   
+ - Sleep: MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.  (thanks to @sos-michael)
  - In Fedora, you may need to blacklist `elants_i2c`. It was hanging sleep for some users. Do this in terminal: `echo "blacklist elants_i2c" | sudo tee /etc/modprobe.d/blacklist.conf`
  - For touchscreen to work, @CabbageSong found a great solution - use the same procedure as the previous tip: "Add blacklist atmel_mxt_ts to /etc/modprobe.d/blacklist.conf and it works after reboot." It appears the atmel touchscreen driver hijacks the Elan touchscreen of this machine. 
 
