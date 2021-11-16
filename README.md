@@ -81,10 +81,10 @@ For Windows, you will need a driver utility beyond what Windows Update can find 
 
 Downloads (all except audio below apply to the Galaxy Chromebook):
 
-Keyboard Remap Utility - https://coolstar.org/chromebook/downloads/drivers/chromebookremap.1.0.2-installer.exe
-Touchpad (Cypress/Elan/Synaptics/Atmel) - https://coolstar.org/chromebook/downloads/drivers/crostouchpad.4.1.1-nosmb-installer.exe
-Atmel Touchscreen - https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe
-Max 98090 Audio - https://coolstar.org/chromebook/downloads/drivers/max98090.1.0.4-installer.exe
+1. Keyboard Remap Utility - https://coolstar.org/chromebook/downloads/drivers/chromebookremap.1.0.2-installer.exe
+2. Touchpad (Cypress/Elan/Synaptics/Atmel) - https://coolstar.org/chromebook/downloads/drivers/crostouchpad.4.1.1-nosmb-installer.exe
+3. Atmel Touchscreen - https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe
+4. (n/a) Max 98090 Audio - https://coolstar.org/chromebook/downloads/drivers/max98090.1.0.4-installer.exe
 
 - For best results make sure to uninstall existing drivers from add/remove programs
 - Keyboard remap might not show up in add/remove programs -- navigate to C:\Program Files\chromebookremap and run uninstall.exe to uninstall the old version before installing the new one
