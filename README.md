@@ -43,7 +43,7 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
-## Step 1: Firmware Write Protect
+## Part 1: Firmware Write Protect
 
 Before you start, you'll need to open the write protect for this machine's CR50 security chip. Start by [reading this wiki by MrChromebox](https://wiki.mrchromebox.tech/Firmware_Write_Protect) to understand what you'll be doing. For this laptop, the requirements include:
 
@@ -56,7 +56,7 @@ Before you start, you'll need to open the write protect for this machine's CR50 
 - Verify at the end that WP has been disabled with `sudo gsctool -a -I`  
 
 
-## Step 2: UEFI Firmware Utility Script: MrChromebox's Coreboot installer
+## Part 2: UEFI Firmware Utility Script: MrChromebox's Coreboot installer
 The next step is to get Coreboot installed so we can install other operating systems.
 
 - Read MrChromebox's install [instructions carefully.](https://mrchromebox.tech/#fwscript)
@@ -67,14 +67,30 @@ The next step is to get Coreboot installed so we can install other operating sys
 - `sudo firmware-util.sh`
 - Follow the on-screen prompts and make sure you save a backup of the stock firmware!
 
-## Step 3: Install Manjaro, Fedora or Windows 10/11
-Burn ISO, boot and configure. For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/) 
- - A few notes for Linux users. In order for sound to work, we need `sof-firmware`. You must be on a distro with a kernel 5.10 and up. Fedora works out of the box, Manjaro does as well (as long as you install sof-firmware).   
+## Part 3: Linux (Manjaro, Fedora)
+Burn ISO, boot and configure. Other distros will work with varying hardware support - Fedora and Manjaro work best out of the box. 
+ - In order for sound to work, we need `sof-firmware`. You must be on a distro with a kernel 5.10 and up. Fedora works out of the box, Manjaro does as well (as long as you install sof-firmware).   
  - Sleep: MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.  (thanks to @sos-michael)
  - In Fedora, you may need to blacklist `elants_i2c`. It was hanging sleep for some users. Do this in terminal: `echo "blacklist elants_i2c" | sudo tee /etc/modprobe.d/blacklist.conf`
  - For touchscreen to work, @CabbageSong found a great solution - use the same procedure as the previous tip: "Add blacklist atmel_mxt_ts to /etc/modprobe.d/blacklist.conf and it works after reboot." It appears the atmel touchscreen driver hijacks the Elan touchscreen of this machine. 
 
-## Step 4: Install MacOS Catalina
+## Part 4: Windows 10/11 (now with improved drivers!)
+For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/). Also, on Discord, @Coolstar revealed major progress for driver support on Windows. 
+- All drivers now signed by Microsoft WHQL -- will work with Secure Boot on Windows 10 19H1 and higher
+- Brightness key adjustments now work properly
+
+Downloads (all except audio below apply to the Galaxy Chromebook):
+
+Keyboard Remap Utility - https://coolstar.org/chromebook/downloads/drivers/chromebookremap.1.0.2-installer.exe
+Touchpad (Cypress/Elan/Synaptics/Atmel) - https://coolstar.org/chromebook/downloads/drivers/crostouchpad.4.1.1-nosmb-installer.exe
+Atmel Touchscreen - https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe
+Max 98090 Audio - https://coolstar.org/chromebook/downloads/drivers/max98090.1.0.4-installer.exe
+
+- For best results make sure to uninstall existing drivers from add/remove programs
+- Keyboard remap might not show up in add/remove programs -- navigate to C:\Program Files\chromebookremap and run uninstall.exe to uninstall the old version before installing the new one
+- Drivers may not work on Windows 10 versions older than 19H1 
+
+## Part 5: MacOS Catalina
 Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future firmware update from MrChromebox. Emulated nvram does seem to work. 
  
 1. Download and set up your Mac OS X Catalina USB install media. [gibMacOS](https://github.com/corpnewt/gibMacOS) 
@@ -97,7 +113,7 @@ Download the lastest version of Opencore. Catalina is recommended for this hardw
 7. Help figure out graphics acceleration. I can share a few ideas, but everything I've tried so far has not worked.
 
 
-## Step 5: Install Brunch.
+## Part 6: Brunch - install ChromeOS on a partition.
 Brunch installs the native recovery image for our device into an image and allows full access to the hardware with a few exceptions:
  - Fingerprint reader does not work (expected behavior) 
  - Google Play is a work in progress. According to some users, it works on beta channel. I mostly use Linux apps. 
