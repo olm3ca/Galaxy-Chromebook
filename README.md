@@ -25,7 +25,7 @@ Specs:
 -  SSD: 256GB NVME M.2 - Easily upgradable to 1TB for $200 following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
 ### OS Compatibility Current Status
-In booting Manjaro Linux 21 with kernel 5.10 and Sound Open Firmware baked in, all hardware worked out of the box. This distro is the easiest and best to install for this hardware, whereas others such as Ubuntu / Mint will need to be upgraded to a newer kernel and SOF will need to be configured. Windows is easy to install but currently has missing functionality. Mac OS is sluggish without accelerated graphics. 
+Outside of ChromeOS in Brunch, Linux has the best support (especially Manjaro and Fedora) for this hardware. Windows is easy to install but currently has missing audio. Mac OS is sluggish without accelerated graphics, audio and other functionality. 
 
 On all installations below, bluetooth works out of the box and therefore audio / external mouse is a solution to the internal audio & touchpad problems noted. Also, battery and power management work for all (even MacOS has working battery percentage).  
 
@@ -35,11 +35,11 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
-| Touchpad           | Working	            | Not Working         | Not Working     | Working           |
+| Touchpad           | Working	            | Not Working         | Working     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
 | Sound              | Working (SOF)        | Not Working         | Not Working	    | Working (see below)|
 | Keyboard backlight | Working              | Not Working         | Not Working     | Working		|
-| Touchscreen        | Working              | Not Working         | Works with pen  | Working 		|
+| Touchscreen        | Working              | Not Working         | Working  | Working 		|
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
@@ -116,7 +116,8 @@ Download the lastest version of Opencore. Catalina is recommended for this hardw
 ## Part 6: Brunch - install ChromeOS on a partition.
 Brunch installs the native recovery image for our device into an image and allows full access to the hardware with a few exceptions:
  - Fingerprint reader does not work (expected behavior) 
- - Google Play is a work in progress. According to some users, it works on beta channel. I mostly use Linux apps. 
+ - Google Play is a work in progress. According to some users, it works on beta channel.
+ - Audio works, but the headphone jack does not. Plugging in to the audio jack results in louder speakers.  
 
  1. Read the instructions on the official Brunch repo: [https://github.com/sebanc/brunch](https://github.com/sebanc/brunch)
  2. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download the latest recvovery. 
