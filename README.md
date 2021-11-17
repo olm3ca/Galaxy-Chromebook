@@ -79,11 +79,10 @@ For Windows, you will need a driver utility beyond what Windows Update can find 
 - All drivers now signed by Microsoft WHQL -- will work with Secure Boot on Windows 10 19H1 and higher
 - Brightness key adjustments now work properly
 
-Downloads to enable Synaptics touchpad / Atmel touchscreen:
+Downloads to enable Synaptics touchpad:
 
 1. Keyboard Remap Utility - https://coolstar.org/chromebook/downloads/drivers/chromebookremap.1.0.2-installer.exe
 2. Touchpad (Cypress/Elan/Synaptics/Atmel) - https://coolstar.org/chromebook/downloads/drivers/crostouchpad.4.1.1-nosmb-installer.exe
-3. Atmel Touchscreen - https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe
 
 - For best results make sure to uninstall existing drivers from add/remove programs
 - Keyboard remap might not show up in add/remove programs -- navigate to C:\Program Files\chromebookremap and run uninstall.exe to uninstall the old version before installing the new one
