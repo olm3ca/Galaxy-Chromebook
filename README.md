@@ -35,11 +35,11 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
-| Touchpad           | Working	            | Not Working         | Working     | Working           |
+| Touchpad           | Working	            | Not Working         | WIP     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
 | Sound              | Working (SOF)        | Not Working         | Not Working	    | Working (see below)|
 | Keyboard backlight | Working              | Not Working         | Not Working     | Working		|
-| Touchscreen        | Working              | Not Working         | Working  | Working 		|
+| Touchscreen        | Working              | Not Working         | WIP  | Working 		|
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
