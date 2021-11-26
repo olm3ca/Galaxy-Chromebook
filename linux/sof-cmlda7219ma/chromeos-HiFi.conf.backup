@@ -1,0 +1,175 @@
+SectionVerb {
+	Value {
+		FullySpecifiedUCM "1"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+
+		cset "name='Playback Digital Volume' 111"
+		cset "name='Playback Digital Switch' on"
+		cset "name='Out DACL Mux' DAIL"
+		cset "name='Out DACR Mux' DAIR"
+		cset "name='Mixer Out FilterL DACL Switch' on"
+		cset "name='Mixer Out FilterR DACR Switch' on"
+		cset "name='ST Mixer Out FilterL Out FilterL Switch' on"
+		cset "name='ST Mixer Out FilterR Out FilterR Switch' on"
+		cset "name='Headphone Jack Switch' on"
+		cset "name='Headset Mic Switch' on"
+		cset "name='Mic Switch' on"
+		cset "name='Mic Volume' 5"
+		cset "name='Capture Digital Volume' 111"
+		cset "name='Capture Digital Switch' on"
+		cset "name='Mixin Volume' 10"
+		cset "name='Mixin Switch' on"
+		cset "name='Mixer In Mic Switch' on"
+		cset "name='Out DAIL Mux' ADC"
+		cset "name='Out DAIR Mux' ADC"
+		cset "name='Gain Ramp Rate' 1"
+
+		cset "name='Pin5-Port0 Mux' 1"
+		cset "name='Pin5-Port1 Mux' 2"
+		cset "name='Pin5-Port2 Mux' 3"
+		cset "name='Pin6-Port0 Mux' 3"
+		cset "name='Pin6-Port1 Mux' 1"
+		cset "name='Pin6-Port2 Mux' 2"
+		cset "name='Pin7-Port0 Mux' 2"
+		cset "name='Pin7-Port1 Mux' 3"
+		cset "name='Pin7-Port2 Mux' 1"
+	]
+	DisableSequence [
+	]
+}
+
+SectionDevice."Speaker".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,0"
+		DspName "speaker_eq"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Spk Switch' on"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Spk Switch' off"
+	]
+}
+
+SectionDevice."Headphone".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,1"
+		JackDev "sof-cmlda7219max Headset Jack"
+		PlaybackMixerElem "Headphone"
+		JackSwitch "2"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headphone Jack Switch' on"
+		cset "name='Headphone Switch' on"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headphone Jack Switch' off"
+		cset "name='Headphone Switch' off"
+	]
+}
+
+SectionDevice."Line Out".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,1"
+		PlaybackMixerElem "Headphone"
+		JackDev "sof-cmlda7219max Headset Jack"
+		JackSwitch "6"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headphone Jack Switch' on"
+		cset "name='Headphone Switch' on"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headphone Jack Switch' off"
+		cset "name='Headphone Switch' off"
+	]
+}
+
+SectionDevice."Front Mic".0 {
+	Value {
+		CapturePCM "hw:sofcmlda7219max,2"
+		CaptureChannelMap "0 1 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+		IntrinsicSensitivity "-2400"
+		DspName "dmic_eq"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+	]
+}
+
+SectionDevice."Rear Mic".0 {
+	Value {
+		CapturePCM "hw:sofcmlda7219max,2"
+		CaptureChannelMap "2 3 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+		IntrinsicSensitivity "-2600"
+		DspName "dmic_eq"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+	]
+}
+
+SectionDevice."Mic".0 {
+	Value {
+		CapturePCM "hw:sofcmlda7219max,1"
+		CaptureMixerElem "Headset Mic"
+		JackDev "sof-cmlda7219max Headset Jack"
+	}
+	EnableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headset Mic Switch' on"
+		cset "name='Mic Switch' on"
+	]
+	DisableSequence [
+		cdev "hw:sofcmlda7219max"
+		cset "name='Headset Mic Switch' off"
+		cset "name='Mic Switch' off"
+	]
+}
+
+SectionDevice."HDMI1".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,5"
+		JackDev "sof-cmlda7219max HDMI/DP, pcm=5 Jack"
+	}
+	EnableSequence [
+	]
+	DisableSequence [
+	]
+}
+
+SectionDevice."HDMI2".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,6"
+		JackDev "sof-cmlda7219max HDMI/DP, pcm=6 Jack"
+	}
+	EnableSequence [
+	]
+	DisableSequence [
+	]
+}
+
+SectionDevice."HDMI3".0 {
+	Value {
+		PlaybackPCM "hw:sofcmlda7219max,7"
+		JackDev "sof-cmlda7219max HDMI/DP, pcm=7 Jack"
+	}
+	EnableSequence [
+	]
+	DisableSequence [
+	]
+}
