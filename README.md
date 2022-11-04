@@ -35,17 +35,17 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | WiFi               | Working              | Working             | Working         | Working		|
 | Bluetooth          | Working              | Working             | Working	    | Working		|
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
-| Touchpad           | Working	            | Not Working         | WIP     | Working           |
+| Touchpad           | Working	            | Not Working         | Working     | Working           |
 | Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
-| Sound              | Working (SOF)        | Not Working         | Not Working	    | Working (see below)|
-| Keyboard backlight | Working              | Not Working         | Not Working     | Working		|
-| Touchscreen        | Working              | Not Working         | WIP  | Working 		|
+| Sound              | Working (SOF)        | Not Working         | WIP	    | Working (see below)|
+| Keyboard backlight | Working              | Not Working         | Working     | Working		|
+| Touchscreen        | Working              | Not Working         | Working  | Working 		|
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
 
 
 ## Part 1: Firmware Write Protect
 
-Before you start, you'll need to open the write protect for this machine's CR50 security chip. Start by [reading this wiki by MrChromebox](https://wiki.mrchromebox.tech/Firmware_Write_Protect) to understand what you'll be doing. For this laptop, the requirements include:
+Before you start, you'll need to open the write protect for this machine's CR50 security chip. Start by [reading this wiki by MrChromebox](https://wiki.mrchromebox.tech/Firmware_Write_Protect) to understand what you'll be doing. For this laptop, there are two options. If you have a SuzyQable CCD Debugging cable, read below. Otherwise, open up the laptop and disconnect the battery. Then skip to Part 2 below:
 
 - A [SuzyQable CCD Debugging cable](https://www.sparkfun.com/products/14746), ~$15 USD + shipping
 - A USB-A to USB-C adapter
@@ -60,20 +60,16 @@ Before you start, you'll need to open the write protect for this machine's CR50 
 The next step is to get Coreboot installed so we can install other operating systems.
 
 - Read MrChromebox's install [instructions carefully.](https://mrchromebox.tech/#fwscript)
-- The latest 4.13-based firmware supports all Cometlake ChromeOS devices, including this laptop.
-- Make sure you are still in Developer Mode. Make sure to click the link above, the commands below are only here as reference but may change:
-- `cd; curl -LO mrchromebox.tech/firmware-util.sh`
-- `sudo install -Dt /usr/local/bin -m 755 firmware-util.sh`
-- `sudo firmware-util.sh`
+- The latest firmware supports all Cometlake ChromeOS devices, including this laptop. Run the script provided.
 - Follow the on-screen prompts and make sure you save a backup of the stock firmware!
 
 ## Part 3: Linux (Manjaro, Fedora)
-Burn ISO, boot and configure. Other distros will work with varying hardware support - Fedora and Manjaro work best out of the box. 
+Burn ISO, boot and configure. Other distros will work with varying hardware support - in my experience, Fedora and Manjaro work best out of the box. 
  - In order for sound to work, we need `sof-firmware`. You must be on a distro with a kernel 5.10 and up. Fedora works out of the box, Manjaro does as well (as long as you install sof-firmware).   
- - Sleep: MrChromebox's firmware v4.13 defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.  (thanks to @sos-michael)
+ - Sleep: MrChromebox's firmware defaults the mem-sleep/suspend state to `sleep-2-idle`, which really isn't suspend at all. Passing the kernel parameter  `mem_sleep_default=deep` will ensure sleep works correctly.  (thanks to @sos-michael)
  - In Fedora, you may need to blacklist `elants_i2c`. It was hanging sleep for some users. Do this in terminal: `echo "blacklist elants_i2c" | sudo tee /etc/modprobe.d/blacklist.conf`
  - For touchscreen to work, @CabbageSong found a great solution - use the same procedure as the previous tip: "Add blacklist atmel_mxt_ts to /etc/modprobe.d/blacklist.conf and it works after reboot." It appears the atmel touchscreen driver hijacks the Elan touchscreen of this machine. 
- - In Arch, some users report sleep is causing the machine to stop responding. To fix both the touchscreen and sleep problems, add these two lines to blacklist.conf:
+ - In Arch / Manjaro, some users report sleep is causing the machine to stop responding. To fix both the touchscreen and sleep problems, add these two lines to blacklist.conf:
 ```
 $ cat /etc/modprobe.d/blacklist.conf 
 blacklist atmel_mxt_ts
@@ -87,9 +83,10 @@ For Windows, you will need a driver utility beyond what Windows Update can find 
 
 Downloads to enable Synaptics touchpad / Atmel touchscreen (some of us have Atmel, some have Elan touchscreens, depends on the device - try it, and if it works, you have Atmel, congrats). 
 
-1. Keyboard Remap Utility - https://coolstar.org/chromebook/downloads/drivers/chromebookremap.1.0.2-installer.exe
-2. Touchpad (Cypress/Elan/Synaptics/Atmel) - https://coolstar.org/chromebook/downloads/drivers/crostouchpad.4.1.1-nosmb-installer.exe
-3. Atmel Touchscreen - https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe
+1. Keyboard Remap Utility - on [coolstar.og](https://coolstar.org) and https://github.com/coolstar/driverinstallers
+2. Touchpad (Cypress/Elan/Synaptics/Atmel) - on [coolstar.og](https://coolstar.org) and https://github.com/coolstar/driverinstallers
+3. Touchscreen - [https://coolstar.org/chromebook/downloads/drivers/crostouchscreen.2.9.1-installer.exe](https://github.com/coolstar/driverinstallers/raw/master/crostouchscreen/crostouchscreen.2.9.3-installer.exe)
+4. Sound - stay tuned for an update from Coolstar about new drivers. Join the Chrultrabook Discord server for the latest info. 
 
 - For best results make sure to uninstall existing drivers from add/remove programs
 - Keyboard remap might not show up in add/remove programs -- navigate to C:\Program Files\chromebookremap and run uninstall.exe to uninstall the old version before installing the new one
@@ -125,7 +122,7 @@ Brunch installs the native recovery image for our device into an image and allow
  - Audio works, but the headphone jack does not. Plugging in to the audio jack results in louder speakers.  
 
  1. Read the instructions on the official Brunch repo: [https://github.com/sebanc/brunch](https://github.com/sebanc/brunch)
- 2. [Go to CrOS Updates](https://cros-updates-serving.appspot.com/) and search for "hatch", then download the latest recvovery. 
+ 2. Go to [Chromiumdash](https://chromiumdash.appspot.com/serving-builds?deviceCategory=Chrome%20OS) and search for "hatch", then download the latest recvovery. 
  3. You will need either an external mini SD card / USD to run Brunch off of, or you can create an EXT4 partition on the internal drive. Make sure it is at least 14GB in size - probably bigger than that if you plan to install any apps.
  4. After installing using the steps in the Brunch guide, you will be provided with a Grub menu to copy into your bootloader. What needs to be changed for our machine to run properly are the following four options: 
  
