@@ -25,7 +25,7 @@ Specs:
 -  SSD: 256GB NVME M.2 - Easily upgradable to 1TB for $200 following [MrHG78's guide](https://www.youtube.com/watch?v=QAyFRj-gORI).
 
 ### OS Compatibility Current Status
-Outside of ChromeOS in Brunch, Linux has the best support (especially Manjaro and Fedora) for this hardware. Windows is easy to install but currently has missing audio. Mac OS is sluggish without accelerated graphics, audio and other functionality. 
+Outside of ChromeOS in Brunch, Linux has the best support (especially Manjaro and Fedora) for this hardware. Windows is easy to install but currently has missing audio. Mac OS should work now with the accelerated graphics with the latest version of WhateverGreen.
 
 On all installations below, bluetooth works out of the box and therefore audio / external mouse is a solution to the internal audio & touchpad problems noted. Also, battery and power management work for all (even MacOS has working battery percentage).  
 
@@ -36,7 +36,7 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | Bluetooth          | Working              | Working             | Working	    | Working		|
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
 | Touchpad           | Working	            | Not Working         | Working     | Working           |
-| Graphics Accel.    | Working              | Not Working	  | Working    	    | Working 		|
+| Graphics Accel.    | Working              | Working	  | Working    	    | Working 		|
 | Sound              | Working (SOF)        | Not Working         | WIP	    | Working (see below)|
 | Keyboard backlight | Working              | Not Working         | Working     | Working		|
 | Touchscreen        | Working              | Not Working         | Working  | Working 		|
@@ -92,33 +92,31 @@ Downloads to enable Synaptics touchpad / Atmel touchscreen (some of us have Atme
 - Keyboard remap might not show up in add/remove programs -- navigate to C:\Program Files\chromebookremap and run uninstall.exe to uninstall the old version before installing the new one
 - Drivers may not work on Windows 10 versions older than 19H1 
 
-## Part 5: MacOS Catalina
-Download the lastest version of Opencore. Catalina is recommended for this hardware. We have non-working native nvram, so Big Sur will not install until this is fixed in a future firmware update from MrChromebox. Emulated nvram does seem to work. 
+## Part 5: MacOS 
+Download the lastest version of Opencore. You may encounter non-working native nvram, so Big Sur may not install until this is fixed. Emulated nvram does seem to work. 
  
-1. Download and set up your Mac OS X Catalina USB install media. [gibMacOS](https://github.com/corpnewt/gibMacOS) 
+1. Download and set up your MacOS USB install media. [gibMacOS](https://github.com/corpnewt/gibMacOS) 
     - Before you make the install USB, make sure it is formatted as Mac OS Extended (Journaled) with GUID Partition Map.
     - To create the installer on a Mac in Terminal: `sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume` and replace MyVolume with the name of your target drive.
 
 2. Create your EFI based on the latest OC Guide for [this Comet Lake generation](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html).
     
-3. When the Catalina install media is ready, mount the EFI partition with the [MountEFI](https://github.com/corpnewt/MountEFI) utility and copy the contents of the latest EFI linked above into this partition.
+3. When the MacOS install media is ready, mount the EFI partition with the [MountEFI](https://github.com/corpnewt/MountEFI) utility and copy the contents of the latest EFI linked above into this partition.
     - Make sure to copy the entire contents of the EFI above, starting from the EFI folder itself. So inside the EFI partition it should start with EFI, followed by BOOT and OC folders, etc. 
 
-4. Now, boot from the Catalina installer. In Disk Utility, go to Show All Devices in the top left, and then select the entire drive to format it as APFS.
+4. Now, boot from the MacOS installer. In Disk Utility, go to Show All Devices in the top left, and then select the entire drive to format it as APFS.
     - After about 10 minutes or so, it will reboot. Go back into the boot menu and select your Catalina install media. In the opencore boot menu you should now see "Mac OS Install" as a menu item. Select that to continue the installation. 
     - The second phase of the installation will continue for about 15-20 minutes. 
   
-5. Before you can boot from the new Catalina installation, you will need to copy the EFI to your insternal SSD drive using the same procedure from step 3.  
+5. Before you can boot from the new MacOS installation, you will need to copy the EFI to your insternal SSD drive using the same procedure from step 3.  
 
 6. Read the [OpenCore guide](https://dortania.github.io/OpenCore-Install-Guide/) on how to improve this hackintosh build and contribute here.
 
-7. Help figure out graphics acceleration. I can share a few ideas, but everything I've tried so far has not worked.
 
 
 ## Part 6: Brunch - install ChromeOS on a partition.
 Brunch installs the native recovery image for our device into an image and allows full access to the hardware with a few exceptions:
  - Fingerprint reader does not work (expected behavior) 
- - Google Play is a work in progress. According to some users, it works on beta channel.
  - Audio works, but the headphone jack does not. Plugging in to the audio jack results in louder speakers.  
 
  1. Read the instructions on the official Brunch repo: [https://github.com/sebanc/brunch](https://github.com/sebanc/brunch)
@@ -126,7 +124,7 @@ Brunch installs the native recovery image for our device into an image and allow
  3. You will need either an external mini SD card / USD to run Brunch off of, or you can create an EXT4 partition on the internal drive. Make sure it is at least 14GB in size - probably bigger than that if you plan to install any apps.
  4. After installing using the steps in the Brunch guide, you will be provided with a Grub menu to copy into your bootloader. What needs to be changed for our machine to run properly are the following four options: 
  
- - `kernel-4.19` needed for our hardware to work properly
+ - `kernel-4.19` needed for our hardware to work properly - note: this may not be true, YMMV, and please update with success using other kernels.
  - `options=native_chromebook_image` tells Brunch to use the native drivers for our machine within the hatch image.
  - `iwlwifi_backport` is for the wifi to work 
  - `enable_updates` will allow you to update to new CrOS releases
