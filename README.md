@@ -37,7 +37,7 @@ On all installations below, bluetooth works out of the box and therefore audio /
 | Suspend / Sleep    | Working (see note)   | Not Working        | Working         | Working 		|
 | Touchpad           | Working	            | Not Working         | Working     | Working           |
 | Graphics Accel.    | Working              | Working	  | Working    	    | Working 		|
-| Sound              | Working (SOF)        | Not Working         | WIP	    | Working (see below)|
+| Sound              | Working (SOF)        | Not Working         | Working (Coolstar)	    | Working (see below)|
 | Keyboard backlight | Working              | Not Working         | Working     | Working		|
 | Touchscreen        | Working              | Not Working         | Working  | Working 		|
 | Screen brightness  | Working		    | Not Working	  | Working	    | Working		|
@@ -77,7 +77,7 @@ blacklist cros_ec_typec
 ``` 
 
 ## Part 4: Windows 10/11 (now with improved drivers!)
-For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/). Also, on Discord, @Coolstar revealed major progress for driver support on Windows. 
+For Windows, you will need a driver utility beyond what Windows Update can find on its own. Driver Booster is one option, or try [Snappy](https://www.snappy-driver-installer.org/). Also, on Discord, @Coolstar has released a driver for audio support on Windows. Check the /r/chrultrabook stikied posts for more details.
 - All drivers now signed by Microsoft WHQL -- will work with Secure Boot on Windows 10 19H1 and higher
 - Brightness key adjustments now work properly
 
